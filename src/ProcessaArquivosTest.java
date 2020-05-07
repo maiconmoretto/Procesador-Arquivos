@@ -10,12 +10,12 @@ import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 class ProcessaArquivosTest {
-
+	@Test
 	@Before
 	void criaArquivoParaTeste() {
 		String nomeArquivo = "01.txt";
-
-		File file = new File("/home/maicon/eclipse-workspace/Procesador de Arquivos/data/in/" + nomeArquivo);
+		String diretorioAtual = System.getProperty("user.dir");
+		File file = new File(diretorioAtual + "/data/in/" + nomeArquivo);
 		boolean aquivoExiste = file.exists();
 		if (!aquivoExiste) {
 			try {
@@ -71,11 +71,12 @@ class ProcessaArquivosTest {
 
 		assertEquals(expected, conteudoArquivo);
 	}
-
+	@Test
 	@After
 	void removeArquivoParaTeste() {
 		String nomeArquivo = "01.txt";
-		File file = new File("/home/maicon/eclipse-workspace/Procesador de Arquivos/data/in/" + nomeArquivo);
+		 String diretorioAtual = System.getProperty("user.dir");
+		File file = new File(diretorioAtual + "/data/in/" + nomeArquivo);
 			
 		boolean aquivoExiste = file.exists();
 		if (aquivoExiste) {
