@@ -21,10 +21,12 @@ class ProcessaArquivosTest {
 				io.printStackTrace();
 			}
 		}
+
 		String caminhoArquivo = "data/in/";
 		ProcessaArquivos processa = new ProcessaArquivos();
 		String conteudoDiretorio = processa.listaArquivos(caminhoArquivo);
 		String expected = nomeArquivo;
+		file.delete();
 		assertEquals(expected, conteudoDiretorio);
 	}
 
@@ -61,6 +63,7 @@ class ProcessaArquivosTest {
 		} catch (IOException e) {
 			System.err.printf("Erro na abertura do arquivo: %s.\n" + e.getMessage(), e.getMessage());
 		}
+		file.delete();
 		assertEquals(expected, conteudoArquivo);
 	}
 
