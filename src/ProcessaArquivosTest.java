@@ -63,6 +63,18 @@ class ProcessaArquivosTest {
 
 		assertEquals(expected, conteudoArquivo);
 	}
+	
+	@Test
+	void processaArquivos() throws Exception {
+		String nomeArquivo = "01.txt";
+
+		String caminhoDiretorio = "data/in/";
+		ProcessaArquivos processa = new ProcessaArquivos();
+		String arquivoProcessado = processa.processaArquivo(caminhoDiretorio, nomeArquivo);
+		String expected = "123";
+		assertEquals(expected, arquivoProcessado);
+	}   
+	
 	@Test
 	@After
 	void removeArquivoParaTeste() {

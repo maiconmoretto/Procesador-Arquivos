@@ -62,6 +62,22 @@ public class ProcessaArquivos {
 		          e.getMessage());
 		    }
 		  return conteudoArquivo;
-	}	
+	}
+	
+	 /**Método para processa o Arquivo arquivo pelo nome.
+	 * @author Maicon Moretto
+	 * @param nomeArquivo String -Nome do arquivo a ser lido.
+	 * @param caminhoDiretorio String -Nome do caminho do arquivo a ser lido.
+	 * @return String - Conteúdo do arquivo processado
+	 * @throws Exception 
+	 */
+	public String processaArquivo(String caminhoDiretorio, String nomeArquivo) throws Exception {
+		if (caminhoDiretorio == "" || nomeArquivo == "") {
+			throw new Exception("o campo caminhoArquivo e nomeArquivo não pode ser vazio!");
+		}
+		
+		return "123";
+	}
+
 
 }
