@@ -10,7 +10,7 @@ public class ProcessaArquivos {
 	
 	 /**Método para listar os arquivos de um diretório pelo nome do diretório.
 	 * @author Maicon Moretto
-	 * @param caminhoArquivo String -Nome do caminho do arquivo a ser lido.
+	 * @param caminhoDiretorio String -Nome do caminho do arquivo a ser lido.
 	 * @return String - Arquivos do diretório
 	 * @throws Exception 
 	 */
@@ -37,17 +37,17 @@ public class ProcessaArquivos {
 	 /**Método para ler o conteúdo do arquivo pelo nome.
 	 * @author Maicon Moretto
 	 * @param nome String -Nome do arquivo a ser lido.
-	 * @param caminhoArquivo String -Nome do caminho do arquivo a ser lido.
+	 * @param caminhoDiretorio String -Nome do caminho do arquivo a ser lido.
 	 * @return String - Conteúdo do arquivo
 	 * @throws Exception 
 	 */
-	public String leArquivoPorNome(String caminhoArquivo, String nomeArquivo) throws Exception {
-		if (caminhoArquivo == "" || nomeArquivo == "") {
+	public String leArquivoPorNome(String caminhoDiretorio, String nomeArquivo) throws Exception {
+		if (caminhoDiretorio == "" || nomeArquivo == "") {
 			throw new Exception("o campo caminhoArquivo e nomeArquivo não pode ser vazio!");
 		}
 		String conteudoArquivo= "";
 		  try {
-		      FileReader arq = new FileReader(caminhoArquivo + nomeArquivo);
+		      FileReader arq = new FileReader(caminhoDiretorio + nomeArquivo);
 		      BufferedReader lerArq = new BufferedReader(arq);
 		 
 		      String linha = lerArq.readLine();
@@ -62,7 +62,6 @@ public class ProcessaArquivos {
 		          e.getMessage());
 		    }
 		  return conteudoArquivo;
-	}
-	
+	}	
 
 }

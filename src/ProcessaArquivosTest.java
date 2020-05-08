@@ -37,25 +37,17 @@ class ProcessaArquivosTest {
 		assertEquals(expected, conteudoDiretorio);
 	}
 
-	/*
-	 * @Test void listaArquivosProcessados() { String nomeArquivo =
-	 * "01-processado.txt"; String caminhoArquivo = "data/out/"; ProcessaArquivos
-	 * processa = new ProcessaArquivos(); String conteudoDiretorio =
-	 * processa.listaArquivos(caminhoArquivo); String expected = nomeArquivo;
-	 * assertEquals(expected, conteudoDiretorio); }
-	 */
-
 	@Test
 	void leArquivoPorNome() throws Exception {
 		String nomeArquivo = "01.txt";
-		String caminhoArquivo = "data/in/";
+		String caminhoDiretorio = "data/in/";
 
 		ProcessaArquivos processa = new ProcessaArquivos();
-		String conteudoArquivo = processa.leArquivoPorNome(caminhoArquivo, nomeArquivo);
+		String conteudoArquivo = processa.leArquivoPorNome(caminhoDiretorio, nomeArquivo);
 		String expected = "";
 
 		try {
-			FileReader arq = new FileReader(caminhoArquivo + nomeArquivo);
+			FileReader arq = new FileReader(caminhoDiretorio + nomeArquivo);
 			BufferedReader lerArq = new BufferedReader(arq);
 
 			String linha = lerArq.readLine();
