@@ -75,8 +75,14 @@ public class ProcessaArquivos {
 		if (caminhoDiretorio == "" || nomeArquivo == "") {
 			throw new Exception("o campo caminhoArquivo e nomeArquivo não pode ser vazio!");
 		}
+		try {
+			//processa arquivo
+			
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
 		
-		return "123";
+		return "Arquivos processados com sucesso!";
 	}
 
 

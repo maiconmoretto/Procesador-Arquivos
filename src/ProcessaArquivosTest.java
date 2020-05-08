@@ -71,7 +71,7 @@ class ProcessaArquivosTest {
 		String caminhoDiretorio = "data/in/";
 		ProcessaArquivos processa = new ProcessaArquivos();
 		String arquivoProcessado = processa.processaArquivo(caminhoDiretorio, nomeArquivo);
-		String expected = "123";
+		String expected = "Arquivos processados com sucesso!";
 		assertEquals(expected, arquivoProcessado);
 	}   
 	
