@@ -8,19 +8,19 @@ import java.io.IOException;
 
 public class ProcessaArquivos {
 	
-	 /**Método para listar os arquivos de um diretório pelo nome.
+	 /**Método para listar os arquivos de um diretório pelo nome do diretório.
 	 * @author Maicon Moretto
 	 * @param caminhoArquivo String -Nome do caminho do arquivo a ser lido.
 	 * @return String - Arquivos do diretório
 	 * @throws Exception 
 	 */
-	public String listaArquivos (String caminhoArquivo) throws Exception {
-		if (caminhoArquivo == "") {
-			throw new Exception("o campo caminhoArquivo não pode ser vazio!");
+	public String listaArquivos (String caminhoDiretorio) throws Exception {
+		if (caminhoDiretorio == "") {
+			throw new Exception("o campo caminhoDiretorio não pode ser vazio!");
 		}
 		String conteudoDiretorio = "";
 
-		File file = new File(caminhoArquivo);
+		File file = new File(caminhoDiretorio);
 		File afile[] = file.listFiles();
 		System.out.println(afile);
 		int i = 0;
