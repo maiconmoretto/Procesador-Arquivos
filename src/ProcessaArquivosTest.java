@@ -27,12 +27,12 @@ class ProcessaArquivosTest {
 	}
 
 	@Test
-	void listaArquivosAprocessar() {
+	void listaArquivosAprocessar() throws Exception {
 		String nomeArquivo = "01.txt";
 
 		String caminhoArquivo = "data/in/";
 		ProcessaArquivos processa = new ProcessaArquivos();
-		String conteudoDiretorio = processa.listaArquivos(caminhoArquivo);
+		String conteudoDiretorio = processa.listaArquivos("");
 		String expected = nomeArquivo;
 		assertEquals(expected, conteudoDiretorio);
 	}
@@ -46,7 +46,7 @@ class ProcessaArquivosTest {
 	 */
 
 	@Test
-	void leArquivoPorNome() {
+	void leArquivoPorNome() throws Exception {
 		String nomeArquivo = "01.txt";
 		String caminhoArquivo = "data/in/";
 

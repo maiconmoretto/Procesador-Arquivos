@@ -12,8 +12,12 @@ public class ProcessaArquivos {
 	 * @author Maicon Moretto
 	 * @param caminhoArquivo String -Nome do caminho do arquivo a ser lido.
 	 * @return String - Arquivos do diretório
+	 * @throws Exception 
 	 */
-	public String listaArquivos (String caminhoArquivo) {
+	public String listaArquivos (String caminhoArquivo) throws Exception {
+		if (caminhoArquivo == "") {
+			throw new Exception("o campo caminhoArquivo não pode ser vazio!");
+		}
 		String conteudoDiretorio = "";
 
 		File file = new File(caminhoArquivo);
@@ -35,8 +39,12 @@ public class ProcessaArquivos {
 	 * @param nome String -Nome do arquivo a ser lido.
 	 * @param caminhoArquivo String -Nome do caminho do arquivo a ser lido.
 	 * @return String - Conteúdo do arquivo
+	 * @throws Exception 
 	 */
-	public String leArquivoPorNome(String caminhoArquivo, String nomeArquivo) {
+	public String leArquivoPorNome(String caminhoArquivo, String nomeArquivo) throws Exception {
+		if (caminhoArquivo == "" || nomeArquivo == "") {
+			throw new Exception("o campo caminhoArquivo e nomeArquivo não pode ser vazio!");
+		}
 		String conteudoArquivo= "";
 		  try {
 		      FileReader arq = new FileReader(caminhoArquivo + nomeArquivo);
