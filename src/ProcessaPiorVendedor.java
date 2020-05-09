@@ -2,7 +2,7 @@
 public class ProcessaPiorVendedor implements Processa {
 
 	@Override
-	public String processa(String caminhoDiretorio, String nomeArquivo) {
+	public String processa(String conteudoArquivo) {
 		return "1";
 	}
 

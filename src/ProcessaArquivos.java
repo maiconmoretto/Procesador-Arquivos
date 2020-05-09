@@ -68,7 +68,7 @@ public class ProcessaArquivos {
 	 * @author Maicon Moretto
 	 * @param nomeArquivo String -Nome do arquivo a ser lido.
 	 * @param caminhoDiretorio String -Nome do caminho do arquivo a ser lido.
-	 * @return String - Conteúdo do arquivo processado
+ * @return	g4e" String - Conteúdo do arquivo processado
 	 * @throws Exception 
 	 */
 	public String processaArquivo(String caminhoDiretorio, String nomeArquivo) throws Exception {
@@ -77,7 +77,9 @@ public class ProcessaArquivos {
 		}
 		try {
 			//processa arquivo
-			
+			String conteudoArquivo = this.leArquivoPorNome(caminhoDiretorio, nomeArquivo);
+			ProcessaQuantidadeClientes  quantidadeClientes = new ProcessaQuantidadeClientes();
+			System.out.println(quantidadeClientes.processa(conteudoArquivo));
 		} catch (Exception e) {
 			throw new Exception(e);
 		}
