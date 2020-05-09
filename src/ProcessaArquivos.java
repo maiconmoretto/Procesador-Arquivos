@@ -54,7 +54,7 @@ public class ProcessaArquivos {
 		
 		      while (linha != null) {		     
 		        linha = lerArq.readLine();
-		        conteudoArquivo+= linha;
+		        conteudoArquivo+= linha + "\n";
 		      }
 		      arq.close();
 		    } catch (IOException e) {
@@ -82,7 +82,8 @@ public class ProcessaArquivos {
 			System.out.println(quantidadeClientes.processa(conteudoArquivo));
 			ProcessaQuantidadeVendedores  quantidadeVendedores = new ProcessaQuantidadeVendedores();
 			System.out.println(quantidadeVendedores.processa(conteudoArquivo));
-
+			ProcessaPiorVendedor  piorVendedor = new ProcessaPiorVendedor();
+			System.out.println(piorVendedor.processa(conteudoArquivo));
 		} catch (Exception e) {
 			throw new Exception(e);
 		}
