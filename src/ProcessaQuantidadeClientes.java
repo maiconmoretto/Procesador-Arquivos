@@ -19,7 +19,6 @@ public class ProcessaQuantidadeClientes implements Processa {
 			index = conteudoArquivo.indexOf("002ç", index + 1);
 		}
 
-		return "Total de clientes " + quantidadeClientes;
-
+		return "Total de cliente(s) " + quantidadeClientes;
 	}
 }

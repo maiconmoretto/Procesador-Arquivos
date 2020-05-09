@@ -80,6 +80,9 @@ public class ProcessaArquivos {
 			String conteudoArquivo = this.leArquivoPorNome(caminhoDiretorio, nomeArquivo);
 			ProcessaQuantidadeClientes  quantidadeClientes = new ProcessaQuantidadeClientes();
 			System.out.println(quantidadeClientes.processa(conteudoArquivo));
+			ProcessaQuantidadeVendedores  quantidadeVendedores = new ProcessaQuantidadeVendedores();
+			System.out.println(quantidadeVendedores.processa(conteudoArquivo));
+
 		} catch (Exception e) {
 			throw new Exception(e);
 		}
