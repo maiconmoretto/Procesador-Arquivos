@@ -6,21 +6,18 @@ public class ProcessaQuantidadeVendedores implements Processa {
 	@Override
 	public String processa(String conteudoArquivo) {
 		List<String> cpfVendedores = new ArrayList<String>();
-		int quantidadeVendedores = 0;
-
-		int index = conteudoArquivo.indexOf("001ç");
-		while (index >= 0) {
-			int inicioCpf = (index + 4);
-			int fimCpf = (inicioCpf + 11);
-			CharSequence cpf = conteudoArquivo.subSequence(inicioCpf, fimCpf);
-			if (!cpfVendedores.contains(cpf)) {
-				cpfVendedores.add((String) cpf);
-				quantidadeVendedores++;
+		String[] linhas = conteudoArquivo.split("\n");
+		String tipoCliente = "001";
+		for (int j = 0; j < linhas.length; j++) {
+			String identificadorTipoDado = linhas[j].substring(0, 3);
+			if (identificadorTipoDado.equals(tipoCliente)) {
+				String[] colunas = linhas[j].split("ç");
+				String cpf = colunas[1];
+				if (!cpfVendedores.contains(cpf)) {
+					cpfVendedores.add(cpf);
+				}
 			}
-			index = conteudoArquivo.indexOf("002ç", index + 1);
 		}
-
-		return "Total de vendedore(s) " + quantidadeVendedores;
+		return "Total de vendedore(s) " + cpfVendedores.size();
 	}
-
 }
