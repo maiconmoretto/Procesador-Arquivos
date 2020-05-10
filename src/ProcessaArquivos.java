@@ -84,6 +84,9 @@ public class ProcessaArquivos {
 			System.out.println(quantidadeVendedores.processa(conteudoArquivo));
 			ProcessaPiorVendedor  piorVendedor = new ProcessaPiorVendedor();
 			System.out.println(piorVendedor.processa(conteudoArquivo));
+			ProcessaVendaMaisCara  vendaMaisCara = new ProcessaVendaMaisCara();
+			System.out.println(vendaMaisCara.processa(conteudoArquivo));
+			
 		} catch (Exception e) {
 			throw new Exception(e);
 		}
