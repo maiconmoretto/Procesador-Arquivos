@@ -5,20 +5,18 @@ public class ProcessaQuantidadeClientes implements Processa {
 	@Override
 	public String processa(String conteudoArquivo) {
 		List<String> cnpjClientes = new ArrayList<String>();
-		int quantidadeClientes = 0;
-
-		int index = conteudoArquivo.indexOf("002ç");
-		while (index >= 0) {
-			int inicioCnpj = (index + 4);
-			int fimCnpj = (inicioCnpj + 14);
-			CharSequence cnpj = conteudoArquivo.subSequence(inicioCnpj, fimCnpj);
-			if (!cnpjClientes.contains(cnpj)) {
-				cnpjClientes.add((String) cnpj);
-				quantidadeClientes++;
+		String[] linhas = conteudoArquivo.split("\n");
+		String tipoCliente = "002";
+		for (int j = 0; j < linhas.length; j++) {
+			String identificadorTipoDado = linhas[j].substring(0, 3);
+			if (identificadorTipoDado.equals(tipoCliente)) {
+				String[] colunas = linhas[j].split("ç");
+				String cnpj = colunas[1];
+				if (!cnpjClientes.contains(cnpj)) {
+					cnpjClientes.add(cnpj);
+				}
 			}
-			index = conteudoArquivo.indexOf("002ç", index + 1);
 		}
-
-		return "Total de cliente(s) " + quantidadeClientes;
+		return "Total de cliente(s) " + cnpjClientes.size();
 	}
 }

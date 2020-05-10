@@ -25,7 +25,7 @@ class ProcessaArquivosTest {
 				+ "002ç2345675434544345çJose da SilvaçRural\n" + "002ç2345675433444345çEduardo PereiraçRural\n"
 				+ "003ç10ç[1-10-100,2-30-2.50,3-40-3.10]çPedro\n" + "003ç08ç[1-34-10,2-33-1.50,3-40-0.10]çPaulo\n"
 				+ "002ç2345675434544345çJose da SilvaçRural\n" + "001ç1234567891234çPedroç50000\n"
-				+ "003ç99ç[1-1-1]çZe";
+				+ "003ç99ç[1-1-1]çZe\n" + "002ç1345675433444345çMaria";
 		gravarArq.printf(conteudoArquivo);
 		file.close();
 	}
