@@ -22,9 +22,9 @@ public class ProcessaPiorVendedor implements Processa {
 					totalVendedorAtual = totalVendedorAtual + (quantidade * preco);
 				}
 				if (totalUltimoVendedor < totalVendedorAtual) {
-					nomePiorVendedor = "pior vendedor:  " + nomeUltimoVendedor;
+					nomePiorVendedor = "Pior vendedor:  " + nomeUltimoVendedor;
 				} else {
-					nomePiorVendedor = "pior vendedor: " + nomeVendedorAtual ;
+					nomePiorVendedor = "Pior vendedor: " + nomeVendedorAtual ;
 				}			
 				nomeUltimoVendedor = nomeVendedorAtual;
 				totalUltimoVendedor = totalVendedorAtual;
