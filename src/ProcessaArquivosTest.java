@@ -34,7 +34,7 @@ class ProcessaArquivosTest {
 	void listaArquivosAprocessar() throws Exception {
 		String nomeArquivo = "01.txt";
 		String caminhoDiretorio = "data/in/";
-		ProcessaArquivos processa = new ProcessaArquivos();
+		TrataArquivo processa = new TrataArquivo();
 		String conteudoDiretorio = processa.listaArquivos(caminhoDiretorio);
 		String expected = nomeArquivo;
 		assertEquals(expected, conteudoDiretorio);
@@ -44,7 +44,7 @@ class ProcessaArquivosTest {
 	void leArquivoPorNome() throws Exception {
 		String nomeArquivo = "01.txt";
 		String caminhoDiretorio = "data/in/";
-		ProcessaArquivos processa = new ProcessaArquivos();
+		TrataArquivo processa = new TrataArquivo();
 		String conteudoArquivo = processa.leArquivoPorNome(caminhoDiretorio, nomeArquivo);
 		String expected = "";
 		try {
@@ -77,7 +77,7 @@ class ProcessaArquivosTest {
 	void validaExisteArquivoProcessado() throws Exception {
 		String nomeArquivo = "01-processado.txt";
 		String caminhoDiretorio = "data/out";
-		ProcessaArquivos processa = new ProcessaArquivos();
+		TrataArquivo processa = new TrataArquivo();
 		String arquivosProcessados = processa.listaArquivos(caminhoDiretorio);
 		String expected = nomeArquivo;
 		assertTrue(arquivosProcessados.contains(expected));
@@ -87,7 +87,7 @@ class ProcessaArquivosTest {
 	void validaConteudoArquivoProcessado() throws Exception {
 		String nomeArquivo = "01-processado.txt";
 		String caminhoDiretorio = "data/out/";
-		ProcessaArquivos processa = new ProcessaArquivos();
+		TrataArquivo processa = new TrataArquivo();
 		String conteudoArquivo = processa.leArquivoPorNome(caminhoDiretorio, nomeArquivo);
 		String expected = "Total de cliente(s) 3\n" + 
 				"Total de vendedore(s) 3\n" + 
