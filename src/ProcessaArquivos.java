@@ -19,7 +19,6 @@ public class ProcessaArquivos {
 			public void run() {
 				System.out.println("iniciada rotina...");
 				TrataArquivo trataArquivo = new TrataArquivo();
-
 				String caminhoDiretorioEntrada = "data/in/";
 				String caminhoDiretorioSaida = "data/out/";
 				try {
