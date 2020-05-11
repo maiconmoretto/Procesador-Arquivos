@@ -89,7 +89,10 @@ class ProcessaArquivosTest {
 		String caminhoDiretorio = "data/out/";
 		ProcessaArquivos processa = new ProcessaArquivos();
 		String conteudoArquivo = processa.leArquivoPorNome(caminhoDiretorio, nomeArquivo);
-		String expected = "Total";
+		String expected = "Total de cliente(s) 3\n" + 
+				"Total de vendedore(s) 3\n" + 
+				"Pior vendedor:  Ze\n" + 
+				"Id da venda mais cara 77";
 		assertTrue(conteudoArquivo.contains(expected));
 	}
 

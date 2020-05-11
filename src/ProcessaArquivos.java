@@ -25,11 +25,9 @@ public class ProcessaArquivos {
 
 		File file = new File(caminhoDiretorio);
 		File afile[] = file.listFiles();
-		System.out.println(afile);
 		int i = 0;
 		for (int j = afile.length; i < j; i++) {
 			File arquivos = afile[i];
-			System.out.println(arquivos.getName());
 			conteudoDiretorio += arquivos.getName();
 		}
 		return conteudoDiretorio;
@@ -58,7 +56,6 @@ public class ProcessaArquivos {
 				linha = lerArq.readLine();
 				conteudoArquivo += linha + "\n" ;
 			}
-			System.out.println("conteudoArquivo " + conteudoArquivo);
 			arq.close();
 		} catch (IOException e) {
 			System.err.printf("Erro na abertura do arquivo: %s.\n" + e.getMessage(), e.getMessage());
