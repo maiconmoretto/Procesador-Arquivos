@@ -2,6 +2,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TrataArquivo {
 	/**
@@ -12,18 +14,18 @@ public class TrataArquivo {
 	 * @return String - Arquivos do diretório
 	 * @throws Exception
 	 */
-	public String listaArquivos(String caminhoDiretorio) throws Exception {
+	public <T> List<String> listaArquivos(String caminhoDiretorio) throws Exception {
 		if (caminhoDiretorio == "") {
 			throw new Exception("o campo caminhoDiretorio não pode ser vazio!");
 		}
-		String conteudoDiretorio = "";
+		List<String> conteudoDiretorio = new ArrayList<String>();
 
 		File file = new File(caminhoDiretorio);
 		File afile[] = file.listFiles();
 		int i = 0;
 		for (int j = afile.length; i < j; i++) {
 			File arquivos = afile[i];
-			conteudoDiretorio += arquivos.getName();
+			conteudoDiretorio.add(arquivos.getName());
 		}
 		return conteudoDiretorio;
 	}

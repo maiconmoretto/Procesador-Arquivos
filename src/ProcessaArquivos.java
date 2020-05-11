@@ -4,10 +4,41 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.io.File;
 import java.io.IOException;
 
 public class ProcessaArquivos {
+
+	public static void main(String args[]) {
+		final long TEMPO = (10000);
+		Timer timer = new Timer();
+		TimerTask timerTask = new TimerTask() {
+			@Override
+			public void run() {
+				System.out.println("iniciada rotina...");
+				TrataArquivo trataArquivo = new TrataArquivo();
+
+				String caminhoDiretorioEntrada = "data/in/";
+				String caminhoDiretorioSaida = "data/out/";
+				try {
+					for (String nomeArquivo : trataArquivo.listaArquivos(caminhoDiretorioEntrada)) {
+						ProcessaArquivos processaArquivos = new ProcessaArquivos();
+						File verificaArquivoJaProcessado = new File(caminhoDiretorioSaida + nomeArquivo.replace(".txt", "-processado.txt"));
+						if (!verificaArquivoJaProcessado.exists()) {
+							processaArquivos.processaArquivo(caminhoDiretorioEntrada, nomeArquivo);
+						}
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				System.out.println("finalizada rotina...");
+
+			}
+		};
+		timer.scheduleAtFixedRate(timerTask, TEMPO, TEMPO);
+	}
 
 	/**
 	 * Método para processa o Arquivo arquivo pelo nome.
@@ -35,7 +66,7 @@ public class ProcessaArquivos {
 			conteudoRelatorio += quantidadeVendedores.processa(conteudoArquivo) + "\n";
 			conteudoRelatorio += piorVendedor.processa(conteudoArquivo) + "\n";
 			conteudoRelatorio += vendaMaisCara.processa(conteudoArquivo);
-			if(!this.criaArquivoRelatorio(nomeRelatorio, conteudoRelatorio)) {
+			if (!this.criaArquivoRelatorio(nomeRelatorio, conteudoRelatorio)) {
 				throw new Exception("Erro ao criar o relatório!");
 			}
 		} catch (Exception e) {
@@ -48,7 +79,7 @@ public class ProcessaArquivos {
 	 * Método para cria Arquivo de Relatório.
 	 * 
 	 * @author Maicon Moretto
-	 * @param nomeArquivo      String -Nome do arquivo a ser lido.
+	 * @param nomeArquivo       String -Nome do arquivo a ser lido.
 	 * @param conteudoRelatorio String -Conteudo a ser inserido no relatório.
 	 * @return String - Trues
 	 * @throws Exception

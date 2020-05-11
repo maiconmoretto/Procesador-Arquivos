@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
@@ -35,7 +37,8 @@ class ProcessaArquivosTest {
 		String nomeArquivo = "01.txt";
 		String caminhoDiretorio = "data/in/";
 		TrataArquivo processa = new TrataArquivo();
-		String conteudoDiretorio = processa.listaArquivos(caminhoDiretorio);
+		List<String> conteudoDiretorio = new ArrayList<String>();
+		conteudoDiretorio.addAll(processa.listaArquivos(caminhoDiretorio));
 		String expected = nomeArquivo;
 		assertEquals(expected, conteudoDiretorio);
 	}
@@ -78,7 +81,8 @@ class ProcessaArquivosTest {
 		String nomeArquivo = "01-processado.txt";
 		String caminhoDiretorio = "data/out";
 		TrataArquivo processa = new TrataArquivo();
-		String arquivosProcessados = processa.listaArquivos(caminhoDiretorio);
+		List<String> arquivosProcessados = new ArrayList<String>();
+		arquivosProcessados.addAll(processa.listaArquivos(caminhoDiretorio));
 		String expected = nomeArquivo;
 		assertTrue(arquivosProcessados.contains(expected));
 	}
