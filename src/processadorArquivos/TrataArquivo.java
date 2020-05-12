@@ -20,16 +20,21 @@ public class TrataArquivo {
 		if (caminhoDiretorio == "") {
 			throw new Exception("o campo caminhoDiretorio não pode ser vazio!");
 		}
-		List<String> conteudoDiretorio = new ArrayList<String>();
+		try {
+			List<String> conteudoDiretorio = new ArrayList<String>();
 
-		File file = new File(caminhoDiretorio);
-		File afile[] = file.listFiles();
-		int i = 0;
-		for (int j = afile.length; i < j; i++) {
-			File arquivos = afile[i];
-			conteudoDiretorio.add(arquivos.getName());
+			File file = new File(caminhoDiretorio);
+			File afile[] = file.listFiles();
+			int i = 0;
+			for (int j = afile.length; i < j; i++) {
+				File arquivos = afile[i];
+				conteudoDiretorio.add(arquivos.getName());
+			}
+			return conteudoDiretorio;
+			
+		} catch (Exception e) {
+			throw new Exception(e);
 		}
-		return conteudoDiretorio;
 	}
 
 	/**
