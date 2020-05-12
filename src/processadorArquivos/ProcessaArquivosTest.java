@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -42,7 +41,7 @@ class ProcessaArquivosTest {
 		List<String> conteudoDiretorio = new ArrayList<String>();
 		conteudoDiretorio.addAll(processa.listaArquivos(caminhoDiretorio));
 		String expected = nomeArquivo;
-		assertEquals(expected, conteudoDiretorio);
+		assertTrue(conteudoDiretorio.contains(expected));
 	}
 
 	@Test
