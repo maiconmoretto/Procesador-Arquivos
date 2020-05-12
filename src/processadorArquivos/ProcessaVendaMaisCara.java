@@ -32,7 +32,7 @@ public class ProcessaVendaMaisCara implements Processa {
 				totalUltimaVenda = totalVendaAtual;
 			}
 		}
-		return "Id da venda mais cara " + idVendaMaisCara;
+		return "Id da venda mais cara = " + idVendaMaisCara;
 	}
 
 }

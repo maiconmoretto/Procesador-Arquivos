@@ -20,6 +20,6 @@ public class ProcessaQuantidadeVendedores implements Processa {
 				}
 			}
 		}
-		return "Total de vendedore(s) " + cpfVendedores.size();
+		return "Total de vendedore(s) = " + cpfVendedores.size();
 	}
 }

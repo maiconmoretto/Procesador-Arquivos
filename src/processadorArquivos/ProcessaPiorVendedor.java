@@ -1,15 +1,14 @@
 package processadorArquivos;
 
-
 public class ProcessaPiorVendedor implements Processa {
 
 	@Override
 	public String processa(String conteudoArquivo) {
 		String[] linhas = conteudoArquivo.split("\n");
-		String nomeUltimoVendedor = "";
-		double totalUltimoVendedor = 0;
+		double totalPiorVendedor = 0;
 		String nomePiorVendedor = "";
 		String tipoVenda = "003";
+		int contadorVendores = 0;
 		for (int j = 0; j < linhas.length; j++) {
 			String identificadorTipoDado = linhas[j].substring(0, 3);
 			if (identificadorTipoDado.equals(tipoVenda)) {
@@ -23,15 +22,19 @@ public class ProcessaPiorVendedor implements Processa {
 					double preco = Double.valueOf(listagemItensNota[l].split("-")[2].replace("]", ""));
 					totalVendedorAtual = totalVendedorAtual + (quantidade * preco);
 				}
-				if (totalUltimoVendedor < totalVendedorAtual) {
-					nomePiorVendedor = "Pior vendedor:  " + nomeUltimoVendedor;
+
+				if (contadorVendores == 0) {
+					totalPiorVendedor = totalVendedorAtual;
+					nomePiorVendedor = nomeVendedorAtual;
 				} else {
-					nomePiorVendedor = "Pior vendedor: " + nomeVendedorAtual ;
-				}			
-				nomeUltimoVendedor = nomeVendedorAtual;
-				totalUltimoVendedor = totalVendedorAtual;
+					if (totalPiorVendedor > totalVendedorAtual) {
+						totalPiorVendedor = totalVendedorAtual;
+						nomePiorVendedor = nomeVendedorAtual;
+					}
+				}
+				contadorVendores++;
 			}
 		}
-		return nomePiorVendedor;
+		return "Pior vendedor = " + nomePiorVendedor;
 	}
 }

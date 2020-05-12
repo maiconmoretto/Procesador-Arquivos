@@ -19,6 +19,6 @@ public class ProcessaQuantidadeClientes implements Processa {
 				}
 			}
 		}
-		return "Total de cliente(s) " + cnpjClientes.size();
+		return "Total de cliente(s) = " + cnpjClientes.size();
 	}
 }

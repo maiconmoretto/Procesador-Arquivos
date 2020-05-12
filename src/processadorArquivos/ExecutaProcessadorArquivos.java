@@ -24,10 +24,6 @@ public class ExecutaProcessadorArquivos {
 						File verificaArquivoJaProcessado = new File(
 								caminhoDiretorioSaida + nomeArquivo.replace(".txt", "-processado.txt"));
 						if (!verificaArquivoJaProcessado.exists() && !conteudoArquivo.equals("null\n")) {
-							System.out.println("nome arquivo sendo processado = " + nomeArquivo);
-							System.out.println("conteudo arquivo sendo processado = " + conteudoArquivo);
-
-							System.out.println("tamanho arquivo sendo processado = " + conteudoArquivo.length());
 							processaArquivos.processaArquivo(caminhoDiretorioEntrada, nomeArquivo);
 						}
 					}
