@@ -31,7 +31,7 @@ public class TrataArquivo {
 				conteudoDiretorio.add(arquivos.getName());
 			}
 			return conteudoDiretorio;
-			
+
 		} catch (Exception e) {
 			throw new Exception(e);
 		}
@@ -55,10 +55,12 @@ public class TrataArquivo {
 			FileReader arq = new FileReader(caminhoDiretorio + nomeArquivo);
 			BufferedReader lerArq = new BufferedReader(arq);
 			String linha = lerArq.readLine();
-			conteudoArquivo +=  linha + "\n";
-			while (linha != null) {
+			conteudoArquivo += linha + "\n";
+			while (lerArq.ready()) {
 				linha = lerArq.readLine();
-				conteudoArquivo += linha + "\n" ;
+				if (!linha.equals("null")) {
+					conteudoArquivo += linha + "\n";
+				}
 			}
 			arq.close();
 		} catch (IOException e) {
