@@ -1,3 +1,5 @@
+package processadorArquivos;
+
 import java.util.*;
 
 public class ProcessaQuantidadeClientes implements Processa {
