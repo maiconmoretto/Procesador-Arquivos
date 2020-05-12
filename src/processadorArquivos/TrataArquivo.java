@@ -54,10 +54,10 @@ public class TrataArquivo {
 		try {
 			FileReader arq = new FileReader(caminhoDiretorio + nomeArquivo);
 			BufferedReader lerArq = new BufferedReader(arq);
-			String linha = lerArq.readLine();
-			conteudoArquivo += linha + "\n";
+			String linha = "";
 			while (lerArq.ready()) {
 				linha = lerArq.readLine();
+				conteudoArquivo += linha + "\n";
 				if (!linha.equals("null")) {
 					conteudoArquivo += linha + "\n";
 				}
