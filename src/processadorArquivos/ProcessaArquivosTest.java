@@ -56,9 +56,8 @@ class ProcessaArquivosTest {
 		try {
 			FileReader arq = new FileReader(caminhoDiretorio + nomeArquivo);
 			BufferedReader lerArq = new BufferedReader(arq);
-			String linha = lerArq.readLine();
-			expected += linha + "\n";
-			while (linha != null) {
+			String linha = "";
+			while (lerArq.ready()) {
 				linha = lerArq.readLine();
 				expected += linha + "\n";
 			}
@@ -109,9 +108,10 @@ class ProcessaArquivosTest {
 			File arquivoSaida = new File(caminhoDiretorio + nomeArquivo);
 			if (arquivoSaida.exists()) {
 				String conteudoArquivo = processa.leArquivoPorNome(caminhoDiretorio, nomeArquivo);
-				System.out.println("conteudo" + conteudoArquivo);
-				String expected = "Total de cliente(s) 3\n" + "Total de vendedore(s) 3\n" + "Pior vendedor:  Ze\n"
-						+ "Id da venda mais cara 77";
+				String expected = "Total de cliente(s) = 3\n" + 
+						"Total de vendedore(s) = 3\n" + 
+						"Pior vendedor = Ze\n" + 
+						"Id da venda mais cara = 77";
 				assertTrue(conteudoArquivo.contains(expected));
 			}
 		} catch (Exception e) {

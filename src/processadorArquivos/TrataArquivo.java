@@ -58,9 +58,6 @@ public class TrataArquivo {
 			while (lerArq.ready()) {
 				linha = lerArq.readLine();
 				conteudoArquivo += linha + "\n";
-				if (!linha.equals("null")) {
-					conteudoArquivo += linha + "\n";
-				}
 			}
 			arq.close();
 		} catch (IOException e) {

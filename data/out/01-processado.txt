@@ -1,4 +1,4 @@
-Total de cliente(s) 3
-Total de vendedore(s) 3
-Pior vendedor:  Ze
-Id da venda mais cara 77
+Total de cliente(s) = 3
+Total de vendedore(s) = 3
+Pior vendedor = Ze
+Id da venda mais cara = 77
