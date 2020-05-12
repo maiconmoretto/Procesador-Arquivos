@@ -30,4 +30,4 @@ HOMEPATH/data/in e colocar o arquivo de saída em HOMEPATH/data/out.</p>
 <p>• Quantidade de clientes no arquivo de entrada</p>
 <p>• Quantidade de vendedores no arquivo de entrada</p>
 <p>• ID da venda mais cara•</p>
-<p>O pior vendedor</p>
+<p>• O pior vendedor</p>
