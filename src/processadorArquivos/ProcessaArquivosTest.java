@@ -152,6 +152,14 @@ class ProcessaArquivosTest {
 		Throwable exception = assertThrows(Exception.class, () -> trataArquivo.listaArquivos(""));
 		assertEquals(messageExpected, exception.getMessage());
 	}
+
+	@Test
+	public void testMain() throws IOException {
+	    String[] args = null;
+	    final InputStream original = System.in;
+	    ExecutaProcessadorArquivos.main(args);
+	    System.setIn(original);
+	}
 	
 	@Test
 	@After
