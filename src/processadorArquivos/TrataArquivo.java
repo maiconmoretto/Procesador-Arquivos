@@ -3,7 +3,9 @@ package processadorArquivos;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,4 +68,31 @@ public class TrataArquivo {
 		return conteudoArquivo;
 	}
 
+	public void criaArquivo(String diretorioArquivo, String nomeArquivo, String conteudoArquivo) throws Exception {
+		if (diretorioArquivo == "" || nomeArquivo == "") {
+			throw new Exception("o campo diretorioArquivo, conteudoArquivo e nomeArquivo não pode ser vazio!");
+		}
+		try {
+			FileWriter arquivo = new FileWriter(diretorioArquivo + nomeArquivo);
+			PrintWriter gravarArq = new PrintWriter(arquivo);
+			gravarArq.printf(conteudoArquivo);
+			arquivo.close();
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
+
+	public void removeArquivo(String diretorioArquivo, String nomeArquivo) throws Exception {
+		if (diretorioArquivo == "" || nomeArquivo == "") {
+			throw new Exception("o campo diretorioArquivo e nomeArquivo não pode ser vazio!");
+		}
+		try {
+			File arquivo = new File(diretorioArquivo + nomeArquivo);
+			if (arquivo.exists()) {
+				arquivo.delete();
+			}
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
 }

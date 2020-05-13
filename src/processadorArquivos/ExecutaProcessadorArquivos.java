@@ -16,20 +16,34 @@ public class ExecutaProcessadorArquivos {
 				TrataArquivo trataArquivo = new TrataArquivo();
 				String caminhoDiretorioEntrada = "data/in/";
 				String caminhoDiretorioSaida = "data/out/";
+				String arquivosProcessados = "Arquivos processados: \n";
+				int totalArquivosProcessados = 0;
 				try {
 					for (String nomeArquivo : trataArquivo.listaArquivos(caminhoDiretorioEntrada)) {
+						totalArquivosProcessados = 0;
 						String conteudoArquivo = trataArquivo.leArquivoPorNome(caminhoDiretorioEntrada, nomeArquivo);
 
 						ProcessaArquivos processaArquivos = new ProcessaArquivos();
 						File verificaArquivoJaProcessado = new File(
 								caminhoDiretorioSaida + nomeArquivo.replace(".txt", "-processado.txt"));
 						if (!verificaArquivoJaProcessado.exists() && !conteudoArquivo.equals("null\n")) {
+							arquivosProcessados += nomeArquivo + "\n";
 							processaArquivos.processaArquivo(caminhoDiretorioEntrada, nomeArquivo);
+							totalArquivosProcessados++;
 						}
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				arquivosProcessados += "\n Em " + java.time.LocalDateTime.now();
+				try {
+					if (totalArquivosProcessados > 0) {
+						trataArquivo.criaArquivo("logs/", "log-" + java.time.LocalDateTime.now(), arquivosProcessados);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				System.out.println(arquivosProcessados);
 				System.out.println("finalizada rotina..." + java.time.LocalDateTime.now());
 			}
 		};

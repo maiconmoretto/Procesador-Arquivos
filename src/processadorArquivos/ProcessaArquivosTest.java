@@ -23,19 +23,18 @@ import junit.framework.AssertionFailedError;
 class ProcessaArquivosTest {
 	@Test
 	@Before
-	void criaArquivoParaTeste() throws IOException {
+	void criaArquivoParaTeste() throws Exception {
 		String nomeArquivo = "01.txt";
 		String diretorioAtual = System.getProperty("user.dir");
-		FileWriter file = new FileWriter(diretorioAtual + "/data/in/" + nomeArquivo);
-		PrintWriter gravarArq = new PrintWriter(file);
+		String diretorioArquivo = diretorioAtual + "/data/in/";
 		String conteudoArquivo = "001ç1234567891234çPedroç50000\n" + "001ç3245678865434çPauloç40000.99\n"
 				+ "002ç2345675434544345çJose da SilvaçRural\n" + "002ç2345675433444345çEduardo PereiraçRural\n"
 				+ "003ç10ç[1-10-100,2-30-2.50,3-40-3.10]çPedro\n" + "003ç08ç[1-34-10,2-33-1.50,3-40-0.10]çPaulo\n"
 				+ "002ç2345675434544345çJose da SilvaçRural\n" + "001ç1234567891234çPedroç50000\n"
 				+ "003ç99ç[1-1-1]çZe\n" + "002ç1345675433444345çMaria\n" + "001ç56245678865434çRobertoç100\n"
 				+ "003ç77ç[1-123-100,2-30-2.50,3-40-3.09]çFernanda";
-		gravarArq.printf(conteudoArquivo);
-		file.close();
+		TrataArquivo trataArquivo = new TrataArquivo();
+		trataArquivo.criaArquivo(diretorioArquivo, nomeArquivo, conteudoArquivo);
 	}
 
 	@Test
@@ -124,8 +123,7 @@ class ProcessaArquivosTest {
 	void processaArquivoFail() throws Exception {
 		String messageExpected = "o campo caminhoArquivo e nomeArquivo não pode ser vazio!";
 		ProcessaArquivos processaArquivos = new ProcessaArquivos();
-		Throwable exception = assertThrows(Exception.class,
-				() -> processaArquivos.processaArquivo("", ""));
+		Throwable exception = assertThrows(Exception.class, () -> processaArquivos.processaArquivo("", ""));
 		assertEquals(messageExpected, exception.getMessage());
 	}
 
@@ -136,7 +134,7 @@ class ProcessaArquivosTest {
 		Throwable exception = assertThrows(Exception.class, () -> processaArquivos.criaArquivoRelatorio("", ""));
 		assertEquals(messageExpected, exception.getMessage());
 	}
-	
+
 	@Test
 	void leArquivoPorNomeFail() throws Exception {
 		TrataArquivo trataArquivo = new TrataArquivo();
@@ -144,7 +142,7 @@ class ProcessaArquivosTest {
 		Throwable exception = assertThrows(Exception.class, () -> trataArquivo.leArquivoPorNome("", ""));
 		assertEquals(messageExpected, exception.getMessage());
 	}
-	
+
 	@Test
 	void processaQuantidadeClientesFail() throws Exception {
 		ProcessaQuantidadeClientes processaQuantidadeClientes = new ProcessaQuantidadeClientes();
@@ -152,7 +150,7 @@ class ProcessaArquivosTest {
 		Throwable exception = assertThrows(Exception.class, () -> processaQuantidadeClientes.processa(""));
 		assertEquals(messageExpected, exception.getMessage());
 	}
-	
+
 	@Test
 	void processaQuantidadeVendedoresFail() throws Exception {
 		ProcessaQuantidadeVendedores processaQuantidadeVendedores = new ProcessaQuantidadeVendedores();
@@ -168,7 +166,7 @@ class ProcessaArquivosTest {
 		Throwable exception = assertThrows(Exception.class, () -> processaVendaMaisCara.processa(""));
 		assertEquals(messageExpected, exception.getMessage());
 	}
-	
+
 	@Test
 	void processaPiorVendedorFail() throws Exception {
 		ProcessaPiorVendedor processaPiorVendedor = new ProcessaPiorVendedor();
@@ -176,7 +174,7 @@ class ProcessaArquivosTest {
 		Throwable exception = assertThrows(Exception.class, () -> processaPiorVendedor.processa(""));
 		assertEquals(messageExpected, exception.getMessage());
 	}
-	
+
 	@Test
 	void listaArquivosFail() throws Exception {
 		TrataArquivo trataArquivo = new TrataArquivo();
@@ -184,30 +182,41 @@ class ProcessaArquivosTest {
 		Throwable exception = assertThrows(Exception.class, () -> trataArquivo.listaArquivos(""));
 		assertEquals(messageExpected, exception.getMessage());
 	}
-
 	@Test
-	public void testMain() throws IOException {
-	    String[] args = null;
-	    final InputStream original = System.in;
-	    ExecutaProcessadorArquivos.main(args);
-	    System.setIn(original);
+	void criaArquivoCampoVazio() throws Exception {
+		TrataArquivo trataArquivo = new TrataArquivo();
+		String messageExpected = "o campo diretorioArquivo, conteudoArquivo e nomeArquivo não pode ser vazio!";
+		Throwable exception = assertThrows(Exception.class, () 
+				-> trataArquivo.criaArquivo("", "", ""));
+		assertEquals(messageExpected, exception.getMessage());
 	}
 	
 	@Test
+	void removeArquivoCampoVazio() {
+		TrataArquivo trataArquivo = new TrataArquivo();
+		String messageExpected = "o campo diretorioArquivo e nomeArquivo não pode ser vazio!";
+		Throwable exception = assertThrows(Exception.class, () 
+				-> trataArquivo.removeArquivo("", ""));
+		assertEquals(messageExpected, exception.getMessage());
+	}
+
+	@Test
+	public void testMain() throws IOException {
+		String[] args = null;
+		final InputStream original = System.in;
+		ExecutaProcessadorArquivos.main(args);
+		System.setIn(original);
+	}
+
+	@Test
 	@After
-	void removeArquivoParaTeste() {
+	void removeArquivoParaTeste() throws Exception {
 		String nomeArquivoEntrada = "01.txt";
 		String nomeArquivoSaida = "01.txt";
 		String diretorioAtual = System.getProperty("user.dir");
 		String diretorioEntrada = "/data/in/";
 		String diretorioSaida = "/data/out/";
-		File arquivoEntrada = new File(diretorioAtual + diretorioEntrada + nomeArquivoEntrada);
-		if (arquivoEntrada.exists()) {
-			arquivoEntrada.delete();
-		}
-		File arquivoSaida = new File(diretorioAtual + diretorioSaida + nomeArquivoSaida);
-		if (arquivoSaida.exists()) {
-			arquivoSaida.delete();
-		}
+		TrataArquivo trataArquivo = new TrataArquivo();
+		trataArquivo.removeArquivo(diretorioEntrada, nomeArquivoEntrada);
 	}
 }
