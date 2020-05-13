@@ -31,3 +31,8 @@ HOMEPATH/data/in e colocar o arquivo de saída em HOMEPATH/data/out.</p>
 <p>• Quantidade de vendedores no arquivo de entrada</p>
 <p>• ID da venda mais cara•</p>
 <p>• O pior vendedor</p>
+<p>Requisitos técnicos
+<p>•O sistema deve rodar continuamente e capturar novos arquivos assim que eles sejam
+inseridos no diretório padrão.</p>
+<p>•Você tem total liberdade para escolher qualquer biblioteca externa se achar
+necessário.</p>
