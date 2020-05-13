@@ -6,7 +6,10 @@ import java.util.List;
 public class ProcessaQuantidadeVendedores implements Processa {
 
 	@Override
-	public String processa(String conteudoArquivo) {
+	public String processa(String conteudoArquivo) throws Exception {
+		if (conteudoArquivo == "") {
+			throw new Exception("O campo conteudoArquivo não pode ser vazio!");
+		} 
 		List<String> cpfVendedores = new ArrayList<String>();
 		String[] linhas = conteudoArquivo.split("\n");
 		String tipoCliente = "001";

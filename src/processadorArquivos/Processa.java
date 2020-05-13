@@ -1,6 +1,6 @@
 package processadorArquivos;
 
 public interface Processa {
-	public String processa(String conteudoArquivo);
+	public String processa(String conteudoArquivo) throws Exception;
 
 }

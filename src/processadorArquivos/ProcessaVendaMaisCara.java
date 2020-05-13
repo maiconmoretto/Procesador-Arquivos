@@ -4,7 +4,10 @@ package processadorArquivos;
 public class ProcessaVendaMaisCara implements Processa {
 
 	@Override
-	public String processa(String conteudoArquivo) {
+	public String processa(String conteudoArquivo) throws Exception {
+		if (conteudoArquivo == "") {
+			throw new Exception("O campo conteudoArquivo não pode ser vazio!");
+		} 
 		String[] linhas = conteudoArquivo.split("\n");
 		int idUltimaVenda = 0;
 		double totalVendaMaisCara = 0;

@@ -146,6 +146,38 @@ class ProcessaArquivosTest {
 	}
 	
 	@Test
+	void processaQuantidadeClientesFail() throws Exception {
+		ProcessaQuantidadeClientes processaQuantidadeClientes = new ProcessaQuantidadeClientes();
+		String messageExpected = "O campo conteudoArquivo não pode ser vazio!";
+		Throwable exception = assertThrows(Exception.class, () -> processaQuantidadeClientes.processa(""));
+		assertEquals(messageExpected, exception.getMessage());
+	}
+	
+	@Test
+	void processaQuantidadeVendedoresFail() throws Exception {
+		ProcessaQuantidadeVendedores processaQuantidadeVendedores = new ProcessaQuantidadeVendedores();
+		String messageExpected = "O campo conteudoArquivo não pode ser vazio!";
+		Throwable exception = assertThrows(Exception.class, () -> processaQuantidadeVendedores.processa(""));
+		assertEquals(messageExpected, exception.getMessage());
+	}
+
+	@Test
+	void processaVendaMaisCaraFail() throws Exception {
+		ProcessaVendaMaisCara processaVendaMaisCara = new ProcessaVendaMaisCara();
+		String messageExpected = "O campo conteudoArquivo não pode ser vazio!";
+		Throwable exception = assertThrows(Exception.class, () -> processaVendaMaisCara.processa(""));
+		assertEquals(messageExpected, exception.getMessage());
+	}
+	
+	@Test
+	void processaPiorVendedorFail() throws Exception {
+		ProcessaPiorVendedor processaPiorVendedor = new ProcessaPiorVendedor();
+		String messageExpected = "O campo conteudoArquivo não pode ser vazio!";
+		Throwable exception = assertThrows(Exception.class, () -> processaPiorVendedor.processa(""));
+		assertEquals(messageExpected, exception.getMessage());
+	}
+	
+	@Test
 	void listaArquivosFail() throws Exception {
 		TrataArquivo trataArquivo = new TrataArquivo();
 		String messageExpected = "o campo caminhoDiretorio não pode ser vazio!";
