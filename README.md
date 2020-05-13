@@ -47,3 +47,10 @@ necessário.</p>
 inseridos no diretório padrão.</p>
 <p>Você tem total liberdade para escolher qualquer biblioteca externa se achar
 necessário.</p>
+
+
+<p>Melhorias do projeto:/p>
+<p>seria interessante criar um criterio para desempate de pior vendedor,/p>
+<p>seria interessante criar uma para desempate de a maior venda, /p>
+<p>pode ser analisad o o que fazer com o arquivo original de entrada que já foi processado, hoje eu deixo no mesmo diretorio,/p>
+<p>pode-se criar um .jar/p>
