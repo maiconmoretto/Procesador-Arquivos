@@ -36,3 +36,9 @@ HOMEPATH/data/in e colocar o arquivo de saída em HOMEPATH/data/out.</p>
 inseridos no diretório padrão.</p>
 <p>•Você tem total liberdade para escolher qualquer biblioteca externa se achar
 necessário.</p>
+
+<p>Requisitos técnicos</p>
+<p>O sistema deve rodar continuamente e capturar novos arquivos assim que eles sejam
+inseridos no diretório padrão.</p>
+<p>Você tem total liberdade para escolher qualquer biblioteca externa se achar
+necessário.</p>
