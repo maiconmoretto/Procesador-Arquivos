@@ -20,9 +20,7 @@ public class ExecutaProcessadorArquivos {
 				int totalArquivosProcessados = 0;
 				try {
 					for (String nomeArquivo : trataArquivo.listaArquivos(caminhoDiretorioEntrada)) {
-						totalArquivosProcessados = 0;
 						String conteudoArquivo = trataArquivo.leArquivoPorNome(caminhoDiretorioEntrada, nomeArquivo);
-
 						ProcessaArquivos processaArquivos = new ProcessaArquivos();
 						File verificaArquivoJaProcessado = new File(
 								caminhoDiretorioSaida + nomeArquivo.replace(".txt", "-processado.txt"));
@@ -35,7 +33,7 @@ public class ExecutaProcessadorArquivos {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				arquivosProcessados += "\n Em " + java.time.LocalDateTime.now();
+				arquivosProcessados += "\nEm " + java.time.LocalDateTime.now();
 				try {
 					if (totalArquivosProcessados > 0) {
 						trataArquivo.criaArquivo("logs/", "log-" + java.time.LocalDateTime.now(), arquivosProcessados);
